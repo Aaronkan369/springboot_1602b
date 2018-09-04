@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>detail.html</title>
+</head>
+<body>
+  <h2>用户信息</h2>
+  <table border=1>
+  		<tr  th:each="stu : ${list}" >
+  			<td th:text="${stu.name}"></td>
+  			<td th:text="${stu.age}"></td>
+  			<td ><a th:href="@{'/stu/'+${stu.id}}">查看</a></td>
+  			<td ><a th:href="@{/stu/(id=${stu.id})}">查看</a></td>
+  		</tr>
+   </table>
+</body>
+</html>
