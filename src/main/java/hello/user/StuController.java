@@ -56,7 +56,7 @@ public class StuController {
     
     @RequestMapping("tolist1")
     public Object tolist1(String name,String age,Model model) {
-    	List<Stu> list = stuDao.list1(name, age);
+    	List<Stu> list = stuDao.findAll();
     	model.addAttribute("list",list);
         return new ModelAndView("user/tolist1");
     }
@@ -123,6 +123,17 @@ public class StuController {
         return pages;
     }
     
+    @RequestMapping("topage1")
+    public Object topage1(String name,@RequestParam(defaultValue="0") int page ,@RequestParam(defaultValue="5") int size,Model model) {
+    	Pageable pageable =PageRequest.of(page, size);
+		Page<Stu> pages = stuDao.page1(name, pageable);
+		model.addAttribute("pages",pages);
+		model.addAttribute("name",name);
+		
+        return new ModelAndView("user/topage1");
+    }
+    
+    
     @Autowired
     private EntityManager entityManager;
     
@@ -174,5 +185,8 @@ public class StuController {
     	stuDao.save(stu);
         return stu;
     }
+    
+    
+   
     
 }

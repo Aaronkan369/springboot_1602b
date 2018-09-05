@@ -30,5 +30,7 @@ public interface StuDao extends CrudRepository<Stu, Long> ,JpaRepository<Stu, Lo
 	List<Stu> findAll(Specification<Stu> spec);
 
 	Page<Stu> findAll(Specification<Stu> specification, Pageable pa);
+
+	List<Stu> findByNameAndAge(String name, String age);
 	
 }

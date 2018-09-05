@@ -1,0 +1,7 @@
+	/**分页样式**/
+	.pager a{
+  		border:1px solid blue;padding:1px;
+  	}
+  	.pager a:hover{
+  		background:green;color:#fff;
+  	}

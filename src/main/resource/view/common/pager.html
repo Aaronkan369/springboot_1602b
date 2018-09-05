@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+  
+   <div class="pager" th:fragment="page1">
+	   <a th:href="@{'javascript:goto(1)'}"  style="background:red">首页</a>
+	   
+	   <a th:href="@{'javascript:goto('+${pages.number}+')'}" th:if="${pages.number>0}" th:text="上一页"></a>
+	   
+	   <a th:href="@{'javascript:goto('+${pages.number-1}+')'}" th:if="${pages.number-1>0}" th:text="${pages.number-1}"></a>
+	   <a th:href="@{'javascript:goto('+${pages.number}+')'}" th:if="${pages.number>0}" th:text="${pages.number}"></a>
+	   <a  th:text="${pages.number+1}"></a>
+	   <a th:href="@{'javascript:goto('+${pages.number+2}+')'}" th:if="${pages.number+2<=pages.totalPages}" th:text="${pages.number+2}"></a>
+	   <a th:href="@{'javascript:goto('+${pages.number+3}+')'}" th:if="${pages.number+3<=pages.totalPages}" th:text="${pages.number+3}"></a>
+	   
+	   <a th:href="@{'javascript:goto('+${pages.number+2}+')'}" th:if="${pages.number+2<=pages.totalPages}" th:text="下一页">尾页</a>
+	   <a th:href="@{'javascript:goto('+${pages.totalPages}+')'}" th:text="'尾页('+${pages.totalPages}+')'">尾页</a>
+  </div>
+  
+  
+  <div class="pager" th:fragment="page2">
+	   <a th:href="@{'javascript:goto(1)'}" style="background:blue">首页</a>
+	   
+	   <a th:href="@{'javascript:goto('+${pages.number}+')'}" th:if="${pages.number>0}" th:text="上一页"></a>
+	   
+	   <a th:href="@{'javascript:goto('+${pages.number-1}+')'}" th:if="${pages.number-1>0}" th:text="${pages.number-1}"></a>
+	   <a th:href="@{'javascript:goto('+${pages.number}+')'}" th:if="${pages.number>0}" th:text="${pages.number}"></a>
+	   <a  th:text="${pages.number+1}"></a>
+	   <a th:href="@{'javascript:goto('+${pages.number+2}+')'}" th:if="${pages.number+2<=pages.totalPages}" th:text="${pages.number+2}"></a>
+	   <a th:href="@{'javascript:goto('+${pages.number+3}+')'}" th:if="${pages.number+3<=pages.totalPages}" th:text="${pages.number+3}"></a>
+	   
+	   <a th:href="@{'javascript:goto('+${pages.number+2}+')'}" th:if="${pages.number+2<=pages.totalPages}" th:text="下一页">尾页</a>
+	   <a th:href="@{'javascript:goto('+${pages.totalPages}+')'}" th:text="'尾页('+${pages.totalPages}+')'">尾页</a>
+  </div>
+   
+   
+   
+  </body>
+</html>

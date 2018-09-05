@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>detail.html</title>
+     <link  href="/static/css/app.css" rel="stylesheet"/>
+     <script src="/static/js/app.js"></script>
+</head>
+<body>
+  <h2>用户信息</h2>
+  
+  <a href="/open/logout">登出</a>
+  
+  <form method="post" action="topage1" id='f' style="border:1px solid red">
+  	<div style="display:none">
+	  	页数(从0开始)：<input name="page" id="page" th:value="${pages.number}"><br>
+	  	页长：<input name="size" th:value="${pages.size}"><br>
+  	</div>
+  	<input placeholder="请输入匹配名" name="name" th:value="${name}"><br>
+  	<input type="submit" value="提交">
+  </form>
+ 
+  
+   <script>
+   	function goto(p){
+   		page.value=p*1-1;
+   		f.submit();
+   	}
+   </script>
+   
+   <div th:replace="common/pager::page1"> </div>
+   
+  <table border=1>
+  		<tr  th:each="stu : ${pages.content}" >
+  			<td th:text="${stu.name}"></td>
+  			<td th:text="${stu.age}"></td>
+  			<td ><a th:href="@{'/stu/'+${stu.id}}">查看</a></td>
+  			<td ><a th:href="@{/stu/(id=${stu.id})}">查看</a></td>
+  		</tr>
+   </table>
+ 
+<div th:replace="common/pager::page1"> </div>
+   
+  </body>
+</html>
