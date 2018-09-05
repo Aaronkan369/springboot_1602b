@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8" />
     <title>detail.html</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.min.css">
+	<script src="http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js"></script>
      <link  href="/static/css/app.css" rel="stylesheet"/>
      <script src="/static/js/app.js"></script>
 </head>
-<body>
+<body class="container ">
   <h2>用户信息</h2>
   
   <a href="/open/logout">登出</a>
   
-  <form method="post" action="topage1" id='f' style="border:1px solid red">
+  <form role="form" method="post" action="topage1" id='f' style="border:1px solid red">
   	<div style="display:none">
-	  	页数(从0开始)：<input name="page" id="page" th:value="${pages.number}"><br>
+	  	页数(从0开始)：<input  name="page" id="page" th:value="${pages.number}"><br>
 	  	页长：<input name="size" th:value="${pages.size}"><br>
   	</div>
-  	<input placeholder="请输入匹配名" name="name" th:value="${name}"><br>
-  	<input type="submit" value="提交">
+  	<div class="form-group">
+	  	<input class="form-contrl" placeholder="请输入匹配名" name="name" th:value="${name}">
+	  	<input class="btn btn-info btn-sm" type="submit" value="查询">
+  	</div>
   </form>
  
   
@@ -30,7 +34,7 @@
    
    <div th:replace="common/pager::page1"> </div>
    
-  <table border=1>
+  <table class="table">
   		<tr  th:each="stu : ${pages.content}" >
   			<td th:text="${stu.name}"></td>
   			<td th:text="${stu.age}"></td>
