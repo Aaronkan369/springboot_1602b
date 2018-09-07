@@ -22,11 +22,16 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 
+@Api(value = "用户管理")
 @RequestMapping("stu")
 @RestController
 public class StuController {
@@ -180,8 +185,10 @@ public class StuController {
         }
     }
     
-    @RequestMapping("add")
-    public Object add(Stu stu) {
+    @ApiOperation(value="添加用户" , notes="添加用户\r\n可以添加多个用户")
+    @RequestMapping(value="add",method=RequestMethod.POST)
+    @ApiParam(name="name",value="用户名")
+    public Object add(Stu stu,@ApiParam(name="username",value="用户名") String username) {
     	stuDao.save(stu);
         return stu;
     }
